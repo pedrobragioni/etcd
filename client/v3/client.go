@@ -277,7 +277,7 @@ func (c *Client) dial(creds grpccredentials.TransportCredentials, dopts ...grpc.
 	}
 
 	initialEndpoints := strings.Join(c.cfg.Endpoints, ";")
-	target := fmt.Sprintf("%s://%p/#initially=[%s]", resolver.Schema, c, initialEndpoints)
+	target := fmt.Sprintf("%s://%p/#initially=[%s]", "dns", c, initialEndpoints)
 	conn, err := grpc.DialContext(dctx, target, opts...)
 	if err != nil {
 		return nil, err
