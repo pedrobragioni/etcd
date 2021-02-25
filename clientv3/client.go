@@ -266,7 +266,7 @@ func (c *Client) Dial(ep string) (*grpc.ClientConn, error) {
 	// This resolver passes through the 'unix' and 'unixs' endpoints schemes used
 	// by etcd without modification, allowing us to directly dial endpoints and
 	// using the same dial functions that we use for load balancer dialing.
-	return c.dial(fmt.Sprintf("passthrough:///%s", ep), creds)
+	return c.dial(fmt.Sprintf("dns:///%s", ep), creds)
 }
 
 func (c *Client) getToken(ctx context.Context) error {
